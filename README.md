@@ -307,9 +307,6 @@ LinkedIn
 
 https://linkedin.com/in/aditya-karmakar
 
-Instagram
-
-https://instagram.com/aperture.1
 
 ---
 

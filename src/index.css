@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --ink: #182420;
+    --ink-soft: #4A5850;
+    --paper: #EEF2EE;
+    --paper-deep: #E2E8E1;
+    --surface: #FFFFFF;
+    --line: #D6DED5;
+    --pine: #21594A;
+    --pine-deep: #163D33;
+    --pine-tint: #E4EFE9;
+    --amber: #E3B341;
+    --coral: #D9534F;
+    --sage: #4C9A78;
+  }
+
+  body {
+    background: radial-gradient(1200px 600px at 85% -10%, #F4F8F3 0%, transparent 55%), var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: 'Fraunces', Georgia, serif;
+  }
+}
+
+/* Custom noise texture overlay */
+.noise-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #EEF2EE;
+}
+::-webkit-scrollbar-thumb {
+  background: #C4D0C3;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #21594A;
+}

@@ -4,14 +4,19 @@ from fastapi import FastAPI
 from pydantic import BaseModel, Field
 from typing import Literal
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
-from fastapi.staticfiles import StaticFiles
 
-model = joblib.load('Mental_Health_Model.pkl')
+
+from pathlib import Path
+
+BASE_DIR = Path(__file__).resolve().parent
+
+MODEL_PATH = BASE_DIR / "Mental_Health_Model.pkl"
+
+model = joblib.load(MODEL_PATH)
+
 top_countries = ['Other','India','USA','Canada','Australia','UK','Germany','Mexico','Turkey','France']
 
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="."), name="static")
 
 app.add_middleware(
     CORSMiddleware,
@@ -47,10 +52,13 @@ class PredictionResponse(BaseModel):
 
 
 
-@app.get('/')
-def greet():
-    return FileResponse("index.html")
-
+@app.get("/")
+def home():
+    return {
+        "status": "running",
+        "project": "AuraMind API",
+        "docs": "/docs"
+    }
 
 @app.post('/predict', response_model=PredictionResponse) #6.77777
 def predict(data: StudentData):
